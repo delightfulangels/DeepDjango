@@ -1,0 +1,101 @@
+.post-image {
+	height: 300px;
+	width: auto;
+	display: block;
+	margin-bottom: 0.75em;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 8px;
+}
+
+.image {
+	margin-bottom: 10px;
+	border-radius: 4px;
+	width: 65%;
+	height: 65%;
+}
+
+.short-image {
+	margin-bottom: 10px;
+	border-radius: 4px;
+	width: 45%;
+	height: 45%;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.h4 {
+	padding-bottom: 0.25em;
+}
+
+.title {
+	padding-top: 1em;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+footer {
+	flex: 0 0 auto;
+}
+
+header {
+	flex: 0 0 auto;
+}
+
+.main-content {
+	flex: 1 0 auto;
+}
+
+.asteriskField {
+    display: none;
+}
+
+.link-title-custom {
+	text-decoration: none;
+}
+
+a:link, a:visited, a:hover, a:active {
+	text-decoration: none;
+}
+
+.main-block {
+    padding-top: 2%;
+}
+
+.leftcol {
+    vertical-align: top;
+}
+
+.leftcol__messages {
+    vertical-align: middle;
+}
+
+.rightcol {
+    width: 100%;
+    vertical-align: top;
+}
+
+.profile-image {
+    object-fit: cover;
+    width: 230px;
+    height: 230px;
+    border-radius: 8%;
+}
+
+.footer-fixed {
+	margin-top: 4%;
+	background-color: #e3f2fd;
+	height: 6%;
+}

@@ -1,0 +1,18 @@
+{% load bootstrap_icons %}
+
+<footer class="text-center footer-fixed shadow-lg">
+    <div class="container">
+        <!-- E-mail -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="mailto: deepdjango@email.com" role="button" data-mdb-ripple-color="dark">
+            {% bs_icon 'envelope-at-fill' %}
+        </a>
+        <!-- Github -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://github.com/" role="button" data-mdb-ripple-color="dark" target="_blank">
+            {% bs_icon 'github' %}
+        </a>
+        <!-- About -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="{% url 'about' %}" role="button" data-mdb-ripple-color="dark">
+            {% bs_icon 'question-circle-fill' %}
+        </a>
+    </div>
+</footer>

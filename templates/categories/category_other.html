@@ -1,0 +1,51 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Другое{% endblock title %}
+
+{% block content %}
+	<p><h2 style="padding-bottom: 0.25em;">Статьи из категории Другое</h2></p>
+	{% for post in post_list %}	
+		<div class="card">
+			<div class="card-header">
+				<span class="font-weight-bold"><b><a href="{% url 'post_detail' post.slug %}" style="color: dark;">{{ post.title }}</a></b></span> &middot;
+				<span class="text-muted">от {{ post.author }} в {{ post.category }} | {{ post.date }}</span>
+			</div>
+			<div class="card-body">
+				{{ post.body|safe|truncatechars:255 }}
+			</div>
+			<div class="card-footer">
+				{% if post.author == user %}
+					<p style="float: left; width: 50%; margin: auto;">
+						<a href="{% url 'post_edit' post.slug %}">Редактировать</a> | <a href="{% url 'post_delete' post.slug %}">Удалить</a>
+					</p>
+				{% endif %}
+				<p style="margin: auto; text-align: right;"><i><a href="{% url 'post_detail' post.slug %}">Читать далее..</a></i></p>
+			</div>
+		</div>
+		<br />
+	{% empty %}
+		Данная категория пуста.
+	{% endfor %}
+	{% if post_list %}
+		<div class="pagination">
+			<span class="step-links" style="margin: auto;">
+				{% if page_obj.has_previous %}
+					<a href="?page=1">&laquo; Первая</a> &middot;
+					<a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+				{% endif %}
+				
+				{% if page_obj.has_previous or page_obj.has_next %}
+					<span class="current">
+						Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+					</span>
+				{% endif %}
+				
+				{% if page_obj.has_next %}
+					<a href="?page={{ page_obj.next_page_number }}">Следующая</a> &middot;
+					<a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+				{% endif %}
+			</span>
+		</div>
+	{% endif %}
+{% endblock content %}

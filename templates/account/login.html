@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Авторизация{% endblock title %}
+
+{% block content %}
+	<h2 class="title" style="padding-bottom: 0.25em;">Авторизация</h2>
+	<form method="POST">
+    {% csrf_token %}
+		{{ form|crispy }}
+		<p class="text-secondary">Нет аккаунта? <a href="{% url 'account_signup' %}">Регистрация</a>.
+		<a href="{% url 'account_reset_password' %}">Восстановление пароля.</a></p>
+		<button class="btn btn-success" type="submit">Войти</button>
+	</form>
+{% endblock content %}

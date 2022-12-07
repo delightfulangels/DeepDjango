@@ -1,0 +1,5 @@
+login: admin
+email: admin@email.com
+password: BQdwJc@fgQ4VEJ9
+
+heroku: https://deep-django-blog.herokuapp.com/

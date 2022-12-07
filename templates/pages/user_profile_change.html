@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Редактирование профиля{% endblock title %}
+
+{% block content %}
+<div class="container main-block">
+    <h2 style="padding-bottom: 1%;">Редактирование профиля</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-outline-secondary" type="submit">Сохранить</button>
+    </form>
+</div>
+{% endblock content %}

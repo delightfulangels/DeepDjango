@@ -1,0 +1,43 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}{{ profile.user.username }} профиль{% endblock title %}
+
+{% block content %}
+<div class="container main-block">
+    <table cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="leftcol">
+                {% if profile.image.url %}
+                    <img class="profile-image" src="{{ profile.image.url }}" alt="{{ profile.user.username }}" width="100%">
+                {% else %}
+                    <img class="profile-image" src="{% static 'images/default.jpg' %}" alt="{{ profile.user.username }}" width="100%">
+                {% endif %}
+                {% if user.email == profile.user.email %}
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-secondary" href="{% url 'user_profile_change' profile.slug %}" role="button" style="margin-top: 4%;">Редактировать профиль</a>
+                    </div>
+                    <div class="d-grid gap-2">
+                      <a class="btn btn-outline-secondary" href="{% url 'account_change_password' %}" role="button" style="margin-top: 4%;">Смена пароля</a>
+                  </div>
+                {% endif %}
+            </td>
+            <td class="rightcol" style="padding-left: 2%;">
+                    <p><b style="font-size: 150%;">Профиль пользователя {{ profile.user.username }}</b><br></p>
+                    {% if profile.bio %}
+                      {{ profile.bio }}<br><br>
+                    {% endif %}
+                    {% if profile.name %}
+                        Имя: {{ profile.name }}<br>
+                    {% endif %}
+                    {% if profile.surname %}
+                        Фамилия: {{ profile.surname }}<br>
+                    {% endif %}
+                    {% if profile.user.email %}
+                      Электронная почта: {{ profile.user.email }}
+                    {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}

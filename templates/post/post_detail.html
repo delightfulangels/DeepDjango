@@ -1,0 +1,52 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block content %}
+	<div class="post-entry title">
+		<h2>{{ post.title }}</h2>
+		<p class="text-muted"> от <a href="{% url 'user_profile' post.author %}">{{ post.author }}</a> в {{ post.category }} &middot; {{ post.date }} 
+			{% if user.is_authenticated %}
+				{% if post.author == user %}
+				|
+					<a style="text-decoration: none;" href="{% url 'post_edit' post.slug %}">Редактировать</a> &middot;
+					<a style="text-decoration: none;" href="{% url 'post_delete' post.slug %}">Удалить</a> </p>
+				{% endif %}
+			{% endif %}
+		{% if post.image %}
+		  <img style="margin-top: 10px;" class="img-fluid image center" src="{{ post.image.url }}" alt="{{ post.title }}">
+		{% endif %}
+		<p>{{ post.body|safe }}</p>
+	</div>
+	<hr>
+	<h4 style="padding-bottom: 0.25em;">Комментарии</h4>
+	{% if post.comment_set.all %}
+		{% for comment in post.comment_set.all %}
+			<div class="d-flex flex-row">
+				<img class="rounded-circle" src="{{ post.author.profile.image.url }}" width="50" alt="{{ post.author }}">
+				<div style="margin-left: 8px;" class="d-flex flex-column">
+					<a href="{% url 'user_profile' post.author %}" class="d-block">{{ comment.author }}</a>
+					<span class="date text-black-50">{{ comment.date }}</span>
+				</div>
+			</div>
+			<p style="margin-top: 10px;" class="comment-text">
+				{{ comment }}
+			</p>
+		{% endfor %}
+	{% else %}
+		Комментариев еще нет. Вы можете быть первым!
+	{% endif %}
+	<hr>
+	{% if user.is_authenticated %}
+		<h4 style="padding-bottom: 0.25em;">Добавить комментарий</h4>
+		<form method="post">
+			{% csrf_token %}
+			{{ form|crispy }}
+			<button class="btn btn-success ml-2" type="submit">Отправить</button>
+		</form>
+	{% else %}
+		<h4>Добавить комментарий</h4>
+		<p>Чтобы иметь возможность оставлять комментарии, вы должны быть <a style="text-decoration: none;" href="{% url 'account_login' %}">авторизованы</a>.</p>
+	{% endif %}
+{% endblock content %}

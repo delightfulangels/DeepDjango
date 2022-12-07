@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}{% endblock title %} - Deep Django</title>
+		<link rel="shortcut icon" type="image/x-icon" sizes="32x32" href="{% static 'images/favicon.ico' %}">
+		
+		<!-- Bootstrap CSS -->
+		<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" crossorigin="anonymous">
+		
+		<!-- base.css -->
+		<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	</head>
+	<body style="background-color: #F0F8FF;">
+		{% include 'include/navbar.html' %}
+		<!-- Search form --> 
+		<div class="container main-content" style="padding-top: 1%;">
+			<form class="d-flex" style="padding-top: 1em;" role="search" action="{% url 'search_results' %}" method="get">
+				<input name="q" class="form-control me-2" type="search" placeholder="Поиск..." aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Найти</button>
+			</form>
+			{% block content %}
+			{% endblock content %}
+		</div>
+		<!-- Bootstrap JS & PopperJS-->
+		<script src="{% static 'js/bootstrap.bundle.js' %}" crossorigin="anonymous"></script>
+
+		<!-- Footer -->
+		{% include 'include/footer.html' %}
+	</body>
+</html>

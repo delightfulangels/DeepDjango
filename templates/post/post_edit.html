@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Редактирование {{ post.title }}{% endblock title %}
+
+{% block content %}
+	<p><h2 style="padding-bottom: 0.25em;">Редактировать публикацию</h2></p>
+	<form method="POST" >
+	  	{% csrf_token %}
+		{{ form.media }}
+		{{ form|crispy }}
+		<button class="btn btn-info ml-2" type="submit">Обновить</button>
+	</form>
+{% endblock content %}

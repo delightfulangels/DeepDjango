@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block title %}Удаление {{post.title}}{% endblock title %}
+
+{% block content %}
+	<p><h2 style="padding-bottom: 0.25em;">Удаление</h2></p>
+	<p style="padding-bottom: 0.25em;">Вы действительно хотите удалить "{{ post.title }}"?</p>
+	<form action="" method="post">
+		{% csrf_token %}
+		<button class="btn btn-danger ml-2" type="submit">Удалить</button>
+  </form>
+{% endblock content %}
