@@ -14,10 +14,6 @@ This is the source code of my Django website which was created as a learning pro
 - Text formatting using [django-ckeditor](https://github.com/django-ckeditor/django-ckeditor)
 - Simple API, using [django-rest-framework](https://github.com/encode/django-rest-framework)<br>
 
-In work:
-
-- Unit-Tests for each application
-
 ### Install
 - Clone this repository:<br>
 `$ git clone https://github.com/delightfulangels/DeepDjango.git`
